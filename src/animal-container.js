@@ -30,4 +30,4 @@ function AnimalContainer() {
     )
 }
 
-ReactDOM.render(<AnimalContainer />, document.getElementById("root"))
+ReactDOM.render(<AnimalContainer />, document.getElementById("root"));
