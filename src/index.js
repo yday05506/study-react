@@ -6,4 +6,5 @@
 // import './person-profile.js'
 // import './props-children.js'
 // import './sol_slot_machine.js'
-import './sol_slot_machine_T.js'
+// import './sol_slot_machine_T.js'
+import './state-study-1.js'

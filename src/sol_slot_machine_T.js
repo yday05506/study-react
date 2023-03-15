@@ -9,6 +9,7 @@ function SlotMachine(props) {
 
     return <div>
         {patterns}
+        {/* allSamePattern이 true고 shouldHighlight도 true면 빨간색으로 바꾸기 */}
         {allSamePattern && <p style={shouldHighlight ? {color:"red"} : null}>축하합니다.</p>}
     </div>
 
