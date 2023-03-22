@@ -10,4 +10,5 @@
 // import './state-study-1.js'
 // import './sol_user_profile.js'
 // import './counter-demo.js'
-import './manipulate-list.js'
+// import './manipulate-list.js'
+import './market.js'
