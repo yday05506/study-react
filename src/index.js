@@ -11,4 +11,7 @@
 // import './sol_user_profile.js'
 // import './counter-demo.js'
 // import './manipulate-list.js'
-import './market.js'
+// import './market.js'
+// import './use-effect-intro'
+// import './use-effect-deps.js'
+import './use-effect-using-local-storage.js'
