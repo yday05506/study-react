@@ -14,4 +14,7 @@
 // import './market.js'
 // import './use-effect-intro'
 // import './use-effect-deps.js'
-import './use-effect-using-local-storage.js'
+// import './use-effect-using-local-storage.js'
+// import './use-effect-unmount.js'
+// import './use-effect-unmount-deps.js'
+import './use-effect-with-dom.js'
