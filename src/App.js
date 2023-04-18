@@ -15,6 +15,11 @@ function App() {
       <div className='black-nav'>
         <h4 style={{fontSize:'16px'}}>힐링</h4>
       </div>
+      <button onClick={() => {
+        let copy1 = [제목들];
+        copy1[1] = '차서원';
+        제목변경(copy1);
+      }}>신규</button>
       <div className='list'>
         <h4>{제목들[0]}<span onClick={() => {likeAdd(like + 1)}}> ✨</span>{like}</h4>
         <p>2023년 03월 17일</p>
