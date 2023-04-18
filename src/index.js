@@ -1,22 +1,17 @@
-// import './jsxstudy.js'
-// import './first-component.js'
-// import './animal-container.js'
-// import './props-basic.js'
-// import './sol_greeting.js'
-// import './person-profile.js'
-// import './props-children.js'
-// import './sol_slot_machine.js'
-// import './sol_slot_machine_T.js'
-// import './state-study-1.js'
-// import './sol_user_profile.js'
-// import './counter-demo.js'
-// import './manipulate-list.js'
-// import './market.js'
-// import './use-effect-intro'
-// import './use-effect-deps.js'
-// import './use-effect-using-local-storage.js'
-// import './use-effect-unmount.js'
-// import './use-effect-unmount-deps.js'
-// import './use-effect-with-dom.js'
-// import './github-fetch-repos.js'
-import './github-user-search-app.js'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
