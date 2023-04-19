@@ -19,4 +19,5 @@
 // import './use-effect-unmount-deps.js'
 // import './use-effect-with-dom.js'
 // import './github-fetch-repos.js'
-import './github-user-search-app.js'
+// import './github-user-search-app.js'
+import './kanye.js'

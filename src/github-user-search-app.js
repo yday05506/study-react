@@ -1,66 +1,68 @@
 import React, { useState, useEffect } from "react"
 import ReactDOM from "react-dom"
 
-const RepoItem = (props) => {
-    const { name, description, forks_count, stargazers_count, watchers_count, owner: { login } } = props.repo
-
-    return (
-        <div>
-            <h1><a href={`https://github.com/${login}/${name}`}>{name}</a></h1>
-            <p>{description ? description : "저장소 설명이 없습니다."}</p>
-            <p>fork: {forks_count} star: {stargazers_count} watchers: {watchers_count}</p>
-        </div>
-    )
+function UserInfo(props) {
+    const user = props.user;
+    return <div>
+        id: {user.login}<br/>
+        name: {user.name}<br/>
+        <img style={{width:200, height:200}} src={user.avatar_url}/>
+    </div>
 }
 
-function RepoSearchApp() {
-    const [username,setUsername] = useState(null)
-    const [text,setText] = useState('')
-    const [repos, setRepos] = useState([])
-    const [loading, setLoading] = useState(true)
-    // 자기 아이디, PAT 토큰값으로 변경
-    const PAT = "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"
+function UserSearchApp(){
+    const [username, setUsername] = useState(null)
+    const [text, setText] = useState('')
+    const [loading, setLoding] = useState(false)
+    const [user, setUser] = useState(null)
+    const [error, setError] = useState(false)
+    const PAT = "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"
 
     useEffect(() => {
-        if(username != null){
-            fetch(`https://api.github.com/users/${username}/repos`, { headers: { Authorization: PAT } })
-            .then(res => res.json())
-            .then(data => {
-                // 데이터 설정 및 로딩 상태 갱신
-                setRepos(data)
-                setLoading(false)
-            })
+        if(username!=null){
+            //네트워크로 요청 보내서 유저 정보 가져오기
+            setLoding(true)
+            fetch(`https://api.github.com/users/${username}`, 
+                {headers: {Authorization: "token " + PAT}})
+                .then(res => {
+                    if(res.status != 200) {
+                        throw new Error()
+                    } else {
+                        return res.json()
+                    }
+                })
+                .then(json => {
+                    setLoding(false)
+                    setUser(json)
+                    setError(false)
+                })
+                .catch((e) => {
+                    setLoding(false)
+                    setUser(null)
+                    setError(true)
+                })
         }
-
     }, [username])
+    
+    if(loading) return <div> 유저 정보를 불러오는 중입니다. </div>
 
-    return (
+    return(
         <div>
-            <input type="text" placeholder="GitHub 아이디 입력" onChange={e => setText(e.target.value)}
-            value={text}/>
+            <input type="test"
+            placeholder="Github 아이디 입력"
+            onChange={e => setText(e.target.value)}
+            value = {text}/>&nbsp;
             <button onClick={() =>{
                 if(text.trim().length != 0){
                     setUsername(text.trim())
                 }
-            }}>사용자 검색</button>
-            {
-                repos.length === 0
-                    ? loading ? <h1>저장소를 불러오는 중입니다.</h1> : <h1>표시할 저장소가 없습니다.</h1>
-                    :
-                    <ul>
-                        {
-                            repos.map((repo, idx) => {
-                                return (<li key={idx}>
-                                    <RepoItem repo={repo} />
-                                </li>)
-                            })
-                        }
-                    </ul>
-            }
+            }}>사용자 검색</button> 
+            { error ? <p>에러가 발생했습니다.</p>
+                :
+                    user === null ? 
+                    <p>검색한 유저가 없습니다.</p> : 
+                    <UserInfo user={user}/> }
         </div>
     )
-
-
 }
-
-ReactDOM.render(<RepoSearchApp />, document.getElementById("root"))
+ReactDOM.render(<UserSearchApp />, document.getElementById("root"))
