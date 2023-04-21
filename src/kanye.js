@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react"
 import ReactDOM from "react-dom"
 
-function Kanye(props) {
-    const kanye = props.kanye;
-    return <div>
-        Kanye: {kanye}<br/>
-    </div>
-}
-
 function KanyeApp(){
     const [quote, setQuote] = useState(false)
     const [text, setText] = useState('')

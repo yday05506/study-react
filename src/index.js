@@ -20,4 +20,5 @@
 // import './use-effect-with-dom.js'
 // import './github-fetch-repos.js'
 // import './github-user-search-app.js'
-import './kanye.js'
+// import './kanye.js'
+import './kanye2.js'
