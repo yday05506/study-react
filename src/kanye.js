@@ -13,26 +13,19 @@ function KanyeApp(){
     const [text, setText] = useState('')
 
     const handleChangeButton = () => {
-        if(quote === false)
-            setQuote(true)
-        else setQuote(false)
-    }
-    const handleButton = () => {
-        handleChangeButton();
+        setQuote(q => !q)
     }
 
     useEffect(() => {
-        fetch(`https://api.kanye.rest/`)
+        fetch(`https://api.kanye.rest`)
                 .then(res => res.json())
-                .then(json => setQuote(json.quote))
-        })
+                .then(json => setText(json.quote))
+        }, [quote])
 
     return(
         <div>
-            <KanyeApp handleChangeButton = {handleButton}/>
-            <button onClick={handleButton}>Get</button> {
-                setQuote(false)
-            }
+            <p>{text}</p>
+            <button onClick={handleChangeButton}>Get</button>
         </div>
     )
 }
