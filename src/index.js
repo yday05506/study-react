@@ -24,4 +24,5 @@
 // import './kanye2.js'
 // import './controlled-component.js'
 // import './reservation-form.js'
-import './use-ref-practice-form.js'
+// import './use-ref-practice-form.js'
+import './use-ref-practice-click-game.js'
