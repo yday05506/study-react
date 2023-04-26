@@ -4,14 +4,16 @@ import ReactDOM from 'react-dom'
 const RefDemo = function(props) {
     const [trigger, setTrigger] = useState(true)
 
+    // re-render를 하지 않음
     // 주로 직접 접근이 필요한 DOM 노드를 저장하기 위한 용도로 ref 사용
+    // DOM 요소
     const inputEl = useRef()
     const canvasEl = useRef()
 
     // 그냥 일반적인 값을 저장하기 위해서도 사용 가능
     // (단, 화면에 보여주어야 할 상태값을 저장할 경우에는 useState를 사용해야 함)
     const value = useRef(1) // 초기값 전달 가능
-    // 값 자체에는 ref 객체의 current 속성을 통해서 접근 가능
+    // 값 자체에는 ref 객체의 current 속성을 통해서 접근 가능 
     // console.log('render', value.current)
 
     return (

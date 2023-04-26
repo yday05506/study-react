@@ -21,4 +21,7 @@
 // import './github-fetch-repos.js'
 // import './github-user-search-app.js'
 // import './kanye.js'
-import './kanye2.js'
+// import './kanye2.js'
+// import './controlled-component.js'
+// import './reservation-form.js'
+import './use-ref-practice-form.js'
