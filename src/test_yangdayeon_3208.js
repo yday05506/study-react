@@ -15,57 +15,82 @@ const Greeting = function(props) {
 // 2번 문제
 const ToggleButton = function(props) {
     const [toggle, setToggle] = useState(true)
-    const [label, setLabel] = useState("on")
 
     return <div>
-        {toggle ? props.children : null}
-        <button onClick={() => {
-            setToggle(s => !s)
-            if(setToggle === true)
-                label = "on"
-            else
-                label = "off"
-        }}>{label}</button>
+        <button onClick={() => {setToggle(s => !s)}}>
+            {toggle ? "on" : "off"}
+        </button>
     </div>
 }
 
 // 3번 문제
 const RandomColorPicker = function(props) {
-    const [pickColor, setPickColor] = useState('#')
+    const [pickColor, setPickColor] = useState('000000')
 
     function randomHex() {
         return (Math.floor(Math.random() * (15 - 1 + 1) + 1)).toString(16);
     }
 
-    const style = {
-        backgroundColor : pickColor,
-        width: 100,
-        height: 100
-    }
-
     return (
-        <>
-        <div style={style} />
-        <button onClick={() => {
-            for(let i = 1; i <= 6; i++) {
-                pickColor += randomHex();
-            }
-        }}>pick</button>
-        </>
+        <div>
+            <div style={{width: 200, height:200, backgroundColor: pickColor}}>
+            <button onClick={() => {
+                let randomColor = "#"
+                for (let i = 0; i < 6; i++) {
+                    randomColor += randomHex(1)
+                }
+                setPickColor(randomColor)
+            }}>pick</button>
+            </div>
+        </div>
     )
 }
 
 // 4번 문제
 const PasswordInput = function(props) {
-    const [password, setPassword] = useState(false);
+    const [text, setText] = useState("")
+    const [show, setShow] = useState(true)
+
+    let result = ""
+    if(!show) {
+        for(let i = 0; i < text.length; i++) {
+            result += "*"
+        }
+    }
+    else {
+        result = text
+    }
 
     return (
-        <input type={password ? "text" : "password"} />
+        <div>
+            <input type="text" value={result} onChange={e => setText(e.target.value)}/>
+            <button onClick={() => {
+                setShow(true)
+            }}>show</button>
+            <button onClick={() => {
+                setShow(false)
+            }}>hide</button>
+        </div>
     )
+}
+
+function RatingStar(props) {
+    const [rating, setRating] = useState(1)
+    const stars = []
+    
+    for(let i = 0; i < 5; i++) {
+        stars.push(
+            <span onClick={() => setRating(i)}>{i > rating ? "☆" : "★"}</span>
+        )
+    }
+
+    return <div>
+        {stars}
+    </div>
 }
 
 
 
 
 // ReactDOM.render(<Greeting prefix = "Hello" target="Yu Byung Suk"/>, document.getElementById("root"));
-ReactDOM.render(<RandomColorPicker />, document.getElementById("root"));
+ReactDOM.render(<RatingStar />, document.getElementById("root"));
